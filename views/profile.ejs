@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="profile.css">
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+         <img src="https://i.pinimg.com/originals/d3/d1/75/d3d175e560ae133f1ed5cd4ec173751a.png" alt="pin logo" class="img1" />
+          
+      </div>
+      <ul class="navLink">
+        <li><a href="/feed">Feed</a></li>
+        <li><a href="/profile">Profile</a></li>
+        <li id="log"><a href="/logout">Logout</a></li>
+      </ul>
+      <div class="lines">
+          <div class="l1"></div>
+          <div class="l2"></div>
+          <div class="l3"></div>
+      </div>
+    </nav>
+    
+    <div id="screen">
+        <div id="cover"></div>
+        <div id="content">
+          <div id="dp">
+            <form id="avatar-form" action="/change" method="post" enctype="multipart/form-data">
+              <input type="file" name="dp">
+            </form>
+            <img id="user-avatar" width="120" height="120" src="/images/uploades/<%= user.profileImage%>">
+          
+          </div>
+          <p id="user-name"><%= user.fullname%></p>
+          <p id="user-location">@<%= user.username%></p>
+
+          <div class="buttons">
+            <a id="follow-btn" >Create Post</a>
+          </div>
+
+          <div id="user-general-values">
+            <p>
+              <span><%= user.posts.length %></span>
+              <span>Posts</span>
+            </p>
+          </div>
+
+          <div class="divisions">
+            <input class="saved" type="button" value="Saved">
+            <input class="posting" type="button" value="Posts">
+          </div>
+
+          <div id="user-saved-posts">
+            <% user.savedPosts.forEach(post => { %>
+                      <div class="saved-post"></div>
+                        <img src="/images/uploades/<%= post.image %>" alt="Saved Post" class="saved-post-image">
+                        <h5 class="saved-post-title"><%= post.title %></h5>
+                      </div>
+            <% }); %>
+          </div>
+
+          <div id="user-publications">
+            <div class="new">
+                <%user.posts.forEach(post => {%>
+                    <div class="card" style="height: fit-content;">
+                        <img src="/images/uploades/<%= post.image %>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><%=post.postText%></h5>
+                        </div>
+                    </div>
+            <%})%>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+
+      <div class="create-post" id="create-post">
+        <form action="/upload" method="post" enctype="multipart/form-data">
+             <div class="container">
+                <label for="psw"><b>Description:</b></label>
+                <input type="text" placeholder="Enter Description" name="filecaption" id="psw" required> 
+        
+                 <label for="file-upload"><b>Choose a file:</b></label>
+                <label class="file"> 
+                    <input type="file" id="file" name="file">
+                </label>
+                <input type="submit" class="submitbtn">
+            </div>
+        </form> 
+     </div>
+
+    <script>
+        const showDivBtn = document.getElementById('follow-btn');
+        const hiddenDiv = document.getElementById('create-post');
+        const screen=document.getElementById('screen'); 
+        const saved=document.querySelector('.saved');
+        const posting=document.querySelector('.posting');
+
+        //avatar change
+        const avatar=document.getElementById("user-avatar").addEventListener('click',()=>{
+          document.querySelector('#avatar-form input').click();
+        });
+        document.querySelector('#avatar-form input').addEventListener('change',()=>{
+          document.querySelector('#avatar-form').submit();
+        });
+
+        
+        showDivBtn.addEventListener('click', () => {
+            screen.style.opacity = '0.3';
+            hiddenDiv.style.display = 'block';
+            hiddenDiv.style.zIndex = '9999';
+        });
+
+        document.addEventListener('click', (event) => {
+            const target = event.target;
+            if (target !== showDivBtn && !hiddenDiv.contains(target)) {
+                hiddenDiv.style.display = 'none';
+                screen.style.opacity = '1';
+            }
+        });
+
+        posting.addEventListener('click',()=>{
+          document.querySelector('#user-publications').style.display='block';
+          posting.classList.add('input-with-border');
+          saved.classList.remove('input-with-border');
+        });
+
+        document.querySelector('.saved').classList.add('input-with-border');
+        document.querySelector('#user-saved-posts').style.display = 'block';
+
+
+
+
+    </script>
+    
+  </body>
+</html>

@@ -1,0 +1,375 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,200;8..144,300;8..144,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
+*{
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+}
+nav{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	min-height: 10vh;
+	background-color: #ffffff;
+	position: fixed;
+  top: 0;
+	width: 100%;
+	z-index: 1;
+	opacity: 0.9;
+}
+
+.img1{
+    width: 70px;
+    position: relative;
+    top: 5px;
+  }
+
+.navLink{
+	display: flex;
+	justify-content: flex-end;
+	width: 65%;
+	background-color: #ffffff;
+  gap: 40px;
+	}
+	
+.navLink li{
+	list-style: none;
+	background-color: #ffffff;
+}
+
+.navLink a{
+  font-family: "Merriweather", serif;
+	color: rgb(0, 0, 0);
+	text-decoration: none;
+	letter-spacing: 2px;
+	font-size: 14px;
+  font-weight: 700;
+	background-color: #ffffff;
+}
+
+.navLink #log a{
+  background-color: #ca1414;
+  padding: 5px 5px;
+  border-radius: 6px;
+}
+
+.navLink #log a:hover{
+  background-color:#aa1c1c;
+  color: black;
+}
+
+.navLink a:hover{
+   color: #aa1c1c;
+}
+
+.lines{
+	display: none;
+	cursor:  crosshair;
+    }
+
+.lines div{
+	width: 25px;
+	height: 3px;
+	background-color: aquamarine;
+	margin: 5px;
+	
+}
+
+.line {
+  width: 1px;
+  height: 60%;
+  margin: 0 20px;
+  background-color: #BCBCBC;
+}
+#screen {
+  position: relative;
+  width: 90%;
+  height: 100%;
+  top: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  opacity: 1;
+}
+
+#screen #cover {
+  width: 100%;
+  height: 25%;
+  background-image: url("https://media.self.com/photos/5f0885ffef7a10ffa6640daa/4:3/w_5240,h_3929,c_limit/travel_plane_corona.jpeg");
+  background-blend-mode: multiply;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: 90px;
+}
+
+#cover #content #dp i{
+  position: absolute;
+  left: calc(50% - 60px);
+  top: -60px;
+  border: 5px solid white;
+  border-radius: 90%;
+}
+
+#screen #content {
+  position: relative;
+  width: 100%;
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+}
+
+#screen #content #user-avatar {
+  object-fit: cover;
+  position: absolute;
+  left: calc(50% - 60px);
+  top: -60px;
+  background-image: url("https://i.pinimg.com/564x/60/03/6c/60036cd263eebd791b2cd43fe143717c.jpg");
+  border: 3px solid rgb(203, 78, 78);
+  border-radius: 90%;
+}
+
+#avatar-form{
+  display: none;
+}
+
+
+#screen #content #user-name {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 75px 0 0 0;
+  padding: 0;
+}
+
+#screen #content #user-location {
+  font-size: 16px;
+  color: #B4B4B0;
+  margin: 5px 0 0 0;
+  padding: 0;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  margin: 2px;
+  gap: 20px;
+}
+
+#screen #content #user-general-values {
+  width: 85%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+  align-items: center;
+  margin: 20px 0 0 0;
+}
+
+#screen #content #user-general-values p {
+  width: 30%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#screen #content #user-general-values p span:nth-child(1) {
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+}
+
+#screen #content #user-general-values p span:nth-child(2) {
+  font-size: 14px;
+  margin: 3px 0 0 0;
+  color: #6C7171;
+}
+
+#screen #content #follow-btn {
+  color: white;
+  height: 35px;
+  width: 110px;
+  margin: 20px 0 0 0;
+  border-radius: 15px;
+  text-decoration: none;
+  border: none;
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  justify-content: center;
+  background: #ca1414;
+  cursor: pointer;
+}
+
+#screen #content #follow-btn:active .create-post{
+    display: block;
+    z-index: 100;
+}
+
+#screen #content #follow-btn:hover {
+  background: #b40000;
+}
+
+#screen #content #user-publications {
+  font-family: "Libre Baskerville", serif;
+  background-color: white;
+  width: 90%;
+  border-radius: 15px;
+  padding: 30px 0;
+  display: none;
+}
+#screen #content #user-publications .card img{
+    cursor: pointer;
+}
+
+#screen #content #user-publications .new{
+    display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  column-gap: 20px;
+    gap: 20px;
+}
+
+#user-publications .new .card-title{
+  font-size: 15px;
+}
+.divisions{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 17px 0 0 0;
+  gap: 70px;
+}
+.posting, .saved{
+  font-size: 20px;
+  font-weight:600;
+  color: #000000;
+  cursor: pointer;
+  background-color: white;
+  border: none;
+  border-bottom:2px solid rgb(215, 215, 215);
+  outline: none;
+}
+.input-with-border {
+  border-bottom: 3px solid rgb(191, 8, 8); /* Bottom border styling when input is clicked */
+}
+@media (max-width: 1427px)
+{
+  #screen #content #user-publications
+  {
+    columns: 5;
+    width: calc(100% - 40px);
+  }
+}
+@media (max-width: 1200px)
+{
+  #screen #content #user-publications
+  {
+    columns: 4;
+  }
+}
+
+@media (max-width: 1000px)
+{
+  #screen #content #user-publications
+  {
+    columns: 3;
+  }
+}
+@media (max-width: 786px)
+{
+    #screen #content #user-publications
+  {
+    columns: 2;
+  }
+}
+@media (max-width: 480px)
+{
+    #screen #content #user-publications
+  {
+    columns: 1;
+  }
+}
+
+h1 {
+  color: white;
+  font-family: sans-serif;
+  text-align: center;
+  padding-top: 0px;
+}
+
+.create-post {
+  background-color: white;
+  width: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 100;
+  transform: translate(-50%, -50%);
+  border: 1px solid  #e2e0e0;
+  border-radius: 10px;
+  display: none;
+}
+
+.container {
+  padding: 20px;
+}
+
+input[type=text]{
+  width: 100%;
+  padding: 9px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+.submitbtn {
+  background-color: #aa1212;
+  color: white;
+  padding: 8px 8px;
+  margin: 10px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.submitbtn:hover {
+  opacity:1;
+}
+
+a {
+  color: dodgerblue;
+}
+
+form h1 {
+  font-weight: 200;
+}
+
+form label {
+  font-weight: 200;
+  color: #333;
+}
+
+.container h1 {
+  color: #333;
+}
