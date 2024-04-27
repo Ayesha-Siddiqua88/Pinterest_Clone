@@ -6,3 +6,6 @@ The tech stack used for the frontend is HTML, CSS, EJS and JavaScript, while for
 
 <h4>Profile Page</h4>
 <img src="public/images/uploades/pinterest2.png">
+
+<h4>SignUp Page</h4>
+<img src="public/images/uploades/pinterest3.png">
